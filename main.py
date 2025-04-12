@@ -1,4 +1,3 @@
-
 def add_time(start, duration, day_of_week=''):
     hours = int(start.split(':')[0])
     minutes = int(start.split(':')[1][0:2])
@@ -19,14 +18,16 @@ def add_time(start, duration, day_of_week=''):
         new_hours += hours
 
     if minutes + new_minutes >= 60:
+        if new_hours == 11 and time_of_day == 'P':
+            time_of_day = 'A'
+            days_later += 1
+        elif new_hours == 11 and time_of_day == 'A':
+            time_of_day = 'P'
         new_hours += (minutes + new_minutes) // 60
         new_minutes = (minutes + new_minutes) % 60
     else:
         new_minutes += minutes
 
-    if new_minutes >= 60:
-        new_hours += 1
-        new_minutes -= 60
     if new_minutes <= 9:
         new_minutes = '0' + str(new_minutes)
 
@@ -50,12 +51,11 @@ def add_time(start, duration, day_of_week=''):
     new_time = str(new_hours) + ':' + str(new_minutes) + ' ' + time_of_day
 
     if day_of_week != '':
-        new_day = ',  '+ days[(days.index(day_of_week.casefold().capitalize()) + days_later) % 7]
+        new_day = ', '+ days[(days.index(day_of_week.casefold().capitalize()) + days_later) % 7]
         new_time += new_day
 
 
     new_time += message
     return new_time
 
-print(add_time('11:59 PM', '24:05'))
-
+print(add_time('8:16 PM', '466:02', 'tuesday'))
