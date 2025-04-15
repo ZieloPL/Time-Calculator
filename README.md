@@ -1,16 +1,5 @@
 # Python Scientific Computing with Python Projects 
 
-Time Calculator assignment for [**FreeCodeCamp**][freecodecamp-url]. The section below explains all of the steps required to complete this assignment.
-
-
-Full Documentation: [**Documentation**][documentation-link]
-
-**Live Demo**: [**REPL**][repl-link] 
-
-
-
-
-
 ## Assignment
 
 Write a function named `add_time` that takes in two required parameters and one optional parameter:
